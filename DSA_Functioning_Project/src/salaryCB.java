@@ -1,0 +1,4 @@
+// singlylinkedlist
+class singlylinkedlist{
+    
+}
