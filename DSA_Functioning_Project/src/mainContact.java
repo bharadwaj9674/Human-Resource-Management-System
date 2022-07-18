@@ -5,9 +5,9 @@ import java.util.TreeMap;
 
 public class mainContact {
 	
-	public void contactShow() {
-		
-		System.out.println("PHONE BOOK ");
+	public void callContact() {
+
+        System.out.println("CONTACT MANAGEMENT SYSTEM");
         System.out.println("===========================");
         System.out.println("Type a command or 'exit' to quit:");
         contactFunctions.listCommands();
@@ -22,40 +22,38 @@ public class mainContact {
         while (!line.equals("exit")) {
 
             switch (line) {
-                case "list":
-                    contactFunctions.listContacts(contacts);
+                case "1":
+                	contactFunctions.listContacts(contacts);
                     break;
-                case "show":
+                case "2":
                 	contactFunctions.showContact(contacts, input);
                     break;
-                case "find":
+                case "3":
                 	contactFunctions.findContact(contacts, input);
                     break;
-                case "add":
+                case "4":
                 	contactFunctions.addContact(contacts, input);
                     break;
-                case "edit":
+                case "5":
                 	contactFunctions.editContact(contacts, input);
                     break;
-                case "delete":
+                case "6":
                 	contactFunctions.deleteContact(contacts, input);
                     break;
-                case "help":
+                case "7":
                 	contactFunctions.listCommands();
                     break;
                 default:
                     System.out.println("Invalid command!");
                     break;
             }
-
-
             System.out.print("\n> ");
             line = input.nextLine().trim();
         }
-
-        System.out.println("Phone Book");
-		
+        System.out.println("'CONTACT MANAGEMENT SYSTEM'");
 	}
 }
+
+
 		
 

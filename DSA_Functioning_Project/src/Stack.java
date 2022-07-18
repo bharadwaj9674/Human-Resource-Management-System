@@ -1,8 +1,7 @@
 import java.io.*;
-import java.util.*;
 
 class Stack {
-    // Implementing stack using linked list
+	// Implementing stack using linked list
     static class StackNode {
         String data;
         StackNode next;
@@ -11,36 +10,39 @@ class Stack {
         }
     }
      
-    StackNode root;
+    static StackNode head;
      
     // pushing data to stack
     
     public void push(String data) throws IOException
     {
         StackNode newNode = new StackNode(data);
-        if (root == null) {
-            root = newNode;
+        if (head == null) {
+            head = newNode;
         }
         else {
-            StackNode temp = root;
-            root = newNode;
+            StackNode temp = head;
+            head = newNode;
             newNode.next = temp;
+            //updateStackFile();
         }
         //System.out.println("Item pushed into stack = "+data);
     }
     
     // deleting and viewing the top most data from stack
   
-    public void pop()
+    public void pop() throws IOException
     {
-        String popped;
-        if (root == null) {
+        //String popped;
+        if (head == null) {
             System.out.println("Stack is Empty");
         }
         else {
-            popped = root.data;
-            root = root.next;
-            System.out.println(popped);
+            //popped = root.data;
+          head = head.next;
+            updateStackFile();
+            //System.out.println(popped);
+            
         }
     }
     
@@ -48,66 +50,59 @@ class Stack {
   
     public void peek()
     {
-        if (root == null) {
+        if (head == null) {
             System.out.println("Stack is empty");
         }
         else {
-            System.out.println(root.data);
+        	System.out.println(head.data);
         }
     }
     
-    public Stack activateStack(Stack s) throws IOException {
-        FileReader fr = new FileReader("/Users/bharath/Desktop/DSA_Project/announcements.txt");
-        BufferedReader br = new BufferedReader(fr);
-        
-        String str;
-        
-        while((str=br.readLine())!=null) {
-            s.push(str);
-        }
-        br.close();
-        return s;
+    public void printAll() {
+    	if(head==null) {
+    		System.out.println("There are no announcements to view...!");
+    	}
+    	else {
+    		while(head!=null) {
+    			System.out.println(head.data);
+    			head=head.next;
+    		}
+    		System.out.println();
+    		System.out.println("Printed all announcements...!");
+    	}
     }
     
-    /*public static void PrintStack(Stack<Integer> s)
-    {
-      Stack<Integer> temp = new Stack<Integer>();
-       
-      while (s.empty() == false)
-      {
-        temp.push(s.peek());
-        s.pop();
-      }  
-     
-      while (temp.empty() == false)
-      {
-        int t = temp.peek();
-        System.out.print(t + " ");
-        temp.pop();
-     
-        // To restore contents of
-        // the original stack.
-        s.push(t); 
-      }
-    }*/
-  
-    public static void main(String[] args) throws IOException{
-        
-        Scanner scan = new Scanner(System.in);
-        
-        System.out.print("Enter 1 to view the latest announcement...!"+" :");
-        int a = scan.nextInt();
-        
-        Stack s = new Stack();
-        
-        if(a==1) {
-            System.out.println();
-            System.out.println(terminalColours.GREEN_BOLD_BRIGHT+"<---------Latest Announcement--------->"+terminalColours.RESET);
-            System.out.println();
-            s=s.activateStack(s);
-            s.peek();
-        }
-        scan.close();
-       
+    // Activating stack
+    
+        public Stack activateStack(Stack s) throws IOException {
+    	FileReader fr = new FileReader("/Users/bharath/Desktop/DSA_Project/announcements.txt");
+    	BufferedReader br = new BufferedReader(fr);
+    	
+    	String str;
+    	
+    	while((str=br.readLine())!=null) {
+    		s.push(str);
+    	}
+    	br.close();
+    	return s;
     }
+    
+    // Update file and stack
+    
+    public void updateStackFile() throws IOException {
+    	FileWriter fw1 = new FileWriter("/Users/bharath/Desktop/DSA_Project/announcements.txt");
+    	PrintWriter fw = new PrintWriter(fw1);
+    	
+    	while(head!=null) {
+    		fw.println(head.data);
+    		
+    		head=head.next;
+
+    	}
+        
+        fw.close();
+    }
+    
+    
 }
+  

@@ -1,8 +1,5 @@
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-
+import java.io.*;
+import java.util.Scanner;
 
 public class PriorityQueue {
 	
@@ -110,7 +107,36 @@ public class PriorityQueue {
         }
     }
     
-    public void activateQ() throws NumberFormatException, IOException {
+    // changing the priority of the most priority element
+    /*
+    public void changePriority() throws NumberFormatException, IOException {
+    	 PriorityQueue toDo = new PriorityQueue();
+    	 Scanner scan = new Scanner(System.in);
+    	 FileReader fr = new FileReader("/Users/bharath/Desktop/DSA_Project/taskData.txt");
+         BufferedReader bf = new BufferedReader(fr);
+         FileWriter fw = new FileWriter("/Users/bharath/Desktop/DSA_Project/taskData.txt",true);
+         BufferedWriter bw = new BufferedWriter(fw);
+         String str;
+
+         while ((str = bf.readLine()) != null) {
+             String[] arr = str.split(",");
+             int change  = scan.nextInt();
+             System.out.print("Enter the priority you have to change for most priority task: ");
+             arr[1] = Integer.toString(change);
+             removeMin();
+             toDo.push(arr[0],Integer.parseInt(arr[1]));
+             
+         }
+         activateQ();
+         
+         scan.close();
+         bw.close();
+         bf.close();
+    }
+    
+    */
+    
+     public void activateQ() throws NumberFormatException, IOException {
    	 PriorityQueue toDo = new PriorityQueue();
         FileReader fr = new FileReader("/Users/bharath/Desktop/DSA_Project/taskData.txt");
         BufferedReader bf = new BufferedReader(fr);

@@ -10,11 +10,19 @@ public class Director {
 		
 		FileWriter fileWriter = new FileWriter("/Users/bharath/Desktop/DSA_Project/taskData.txt", true);
 		
+		System.out.println();
+		System.out.println("<------   To-Do List     ------>");
+		System.out.println();
+		
 		System.out.println(terminalColours.GREEN_BRIGHT+"1.Show Tasks"+terminalColours.RESET);
         System.out.println(terminalColours.RED_BRIGHT+"2.Remove Task"+terminalColours.RESET);
         System.out.println(terminalColours.CYAN_BRIGHT+"3.First Task To Be Done"+terminalColours.RESET);
         System.out.println(terminalColours.YELLOW_BRIGHT+"4.Adding Task"+terminalColours.RESET);
         System.out.println(terminalColours.PURPLE_BRIGHT+"5.Display completed tasks"+terminalColours.RESET);
+        
+        System.out.println();
+        System.out.print("Select any of the following function:  ");
+        System.out.println();
 		
         
         Scanner scan = new Scanner(System.in);
@@ -130,6 +138,10 @@ public class Director {
         fileWriter.close();
         scan.close();
         sc.close();
+        
+        if(a==6) {
+        	//pr.changePriority();
+        }
 		
 	}
 }
